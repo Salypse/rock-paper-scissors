@@ -5,7 +5,7 @@ function getComputerChoice() {
     if (computerChoice < 0.33) {
         return "rock"
     }
-    else if (computerChoice >0.33 && computerChoice < 0.66) {
+    else if (computerChoice < 0.66) {
         return "paper"
     }
     else {
@@ -25,43 +25,44 @@ let computerScore = 0
 //Play round of rps using player and computer choices
 function playRound(playerChoice, computerChoice) {
     if (playerChoice == computerChoice) {
-        console.log("Draw")
+        return console.log("Draw")
     }
-    else if (playerChoice == "rock" && computerChoice == "scissors") {
-        playerScore += 1
-        return console.log("You win!")
+    else if (
+        playerChoice === "rock" && computerChoice === "scissors" ||
+        playerChoice === "paper" && computerChoice === "rock" ||
+        playerChoice === "scissors" && computerChoice === "paper"
+    ) {
+        playerScore++
+        console.log("You win!")
     }
-    else if (computerChoice == "rock" && playerChoice == "scissors") {
-        computerScore += 1
-        return console.log("Computer wins!")
+    else {
+        computerScore++
+        console.log("Computer wins!")
     }
-    else if (playerChoice == "paper" && computerChoice == "rock") {
-        playerScore += 1
-        return console.log("You win!")
-    }
-    else if (computerChoice == "paper" && playerChoice == "rock") {
-        computerScore += 1
-        return console.log("Computer wins!")
-    }
-    else if (playerChoice == "scissors" && computerChoice == "paper") {
-        playerScore += 1
-        return console.log("You win!")
-    }
-    else if (computerChoice == "scissors" && playerChoice == "paper") {
-        computerScore += 1
-        return console.log("Computer wins!")
-    }
-
-    finishRound()
 }
 
 
 //Player and computer get new choices after each round
-function finishRound() {
+function makeNewChoice() {
     playerChoice = getPlayerChoice()
     computerChoice = getComputerChoice()
 }
 
 
-const playerChoice = getPlayerChoice()
-const computerChoice = getComputerChoice()
+let playerChoice = getPlayerChoice()
+let computerChoice = getComputerChoice()
+
+//Play full game of rps or 5 rounds 
+function playGame() {
+    playRound(playerChoice, computerChoice)
+    makeNewChoice()
+    playRound(playerChoice, computerChoice)
+    makeNewChoice()
+    playRound(playerChoice, computerChoice)
+    makeNewChoice()
+    playRound(playerChoice, computerChoice)
+    makeNewChoice()
+    playRound(playerChoice, computerChoice)
+}
+
+playGame()
