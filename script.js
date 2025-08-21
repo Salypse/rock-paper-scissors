@@ -13,11 +13,6 @@ function getComputerChoice() {
     }
 }
 
-//Get the players rps choice
-function getPlayerChoice() {
-    playerInput = prompt("Choose Rock, Paper, or Scissors")
-    return playerInput.toLowerCase()
-}
 
 let playerScore = 0
 let computerScore = 0
@@ -33,27 +28,37 @@ function playRound(playerChoice, computerChoice) {
         playerChoice === "scissors" && computerChoice === "paper"
     ) {
         playerScore++
+        updatePlayerScore(playerScore)
         console.log("You win!")
     }
     else {
         computerScore++
+        updateComputerScore(computerScore)
         console.log("Computer wins!")
     }
 }
 
-
-//Player and computer get new choices after each round
-function makeNewChoice() {
-    playerChoice = getPlayerChoice()
-    computerChoice = getComputerChoice()
+function updatePlayerScore(playerScore) {
+    playerScoreText = document.querySelector(".playerScore");
+    playerScoreText.textContent = `Player Score: ${playerScore}`;
 }
 
-
-//let playerChoice = getPlayerChoice()
-//let computerChoice = getComputerChoice()
-
-//Play full game of rps or 5 rounds 
-function playGame() {
+function updateComputerScore(computerScore) {
+    computerScoreText = document.querySelector(".computerScore");
+    computerScoreText.textContent = `Computer Score: ${computerScore}`;
 }
 
-playGame()
+const playerRockButton = document.querySelector("#playerRockButton");
+playerRockButton.addEventListener("click", function (e) {
+    playRound("rock", getComputerChoice())
+})
+
+const playerPaperButton = document.querySelector("#playerPaperButton");
+playerPaperButton.addEventListener("click", function (e) {
+    playRound("paper", getComputerChoice())
+})
+
+const playerScissorsButton = document.querySelector("#playerScissorsButton");
+playerScissorsButton.addEventListener("click", function (e) {
+    playRound("scissors", getComputerChoice())
+})
