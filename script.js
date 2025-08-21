@@ -49,20 +49,11 @@ function makeNewChoice() {
 }
 
 
-let playerChoice = getPlayerChoice()
-let computerChoice = getComputerChoice()
+//let playerChoice = getPlayerChoice()
+//let computerChoice = getComputerChoice()
 
 //Play full game of rps or 5 rounds 
 function playGame() {
-    playRound(playerChoice, computerChoice)
-    makeNewChoice()
-    playRound(playerChoice, computerChoice)
-    makeNewChoice()
-    playRound(playerChoice, computerChoice)
-    makeNewChoice()
-    playRound(playerChoice, computerChoice)
-    makeNewChoice()
-    playRound(playerChoice, computerChoice)
 }
 
 playGame()
