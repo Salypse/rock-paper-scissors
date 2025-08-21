@@ -20,7 +20,7 @@ let computerScore = 0
 //Play round of rps using player and computer choices
 function playRound(playerChoice, computerChoice) {
     if (playerChoice == computerChoice) {
-        return console.log("Draw")
+        updateInfoText("draw");
     }
     else if (
         playerChoice === "rock" && computerChoice === "scissors" ||
@@ -29,12 +29,29 @@ function playRound(playerChoice, computerChoice) {
     ) {
         playerScore++
         updatePlayerScore(playerScore)
-        console.log("You win!")
+        updateInfoText("player")
     }
     else {
         computerScore++
         updateComputerScore(computerScore)
-        console.log("Computer wins!")
+        updateInfoText("computer");
+    }
+}
+
+function updateInfoText(winner) {
+    const infoText = document.querySelector(".infoText p")
+    switch (winner) {
+        case "draw":
+            infoText.textContent = "Draw!"
+            break;
+        case "player":
+            infoText.textContent = "Player wins!"
+            break;
+        case "computer":
+            infoText.textContent = "Computer wins!"
+            break;
+        default:
+            infoText.textContent = "Choose an option to begin the game";
     }
 }
 

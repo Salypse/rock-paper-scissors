@@ -14,9 +14,12 @@ p {
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 8px;
+
+    display: flex;
+    justify-content: center;
 }
 
-.rps-header {
+.rpsHeader {
     font-weight: 600;
     background-color: #3D405B;
     border-bottom: 8px solid #E07A5F;
@@ -26,17 +29,17 @@ p {
     align-items: center;
 }
 
-.rps-header p {
+.rpsHeader p {
     font-size: 36px;
 }
 
-.winner-text {
+.winnerText {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.game-sections {
+.gameSections {
     width: 100%;
     height: 250px;
 
@@ -46,7 +49,7 @@ p {
     align-items: center;
 }
 
-.player-section {
+.playerSection {
     width: 500px;
     height: 250px;
 
@@ -65,7 +68,7 @@ p {
     height: auto;
 }
 
-.rps-selection {
+.rpsSelection {
     width: 125px;
     height: 125px;
     margin: 4px;
