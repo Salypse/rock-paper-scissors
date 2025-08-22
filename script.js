@@ -1,3 +1,9 @@
+let playerScore = 0
+let computerScore = 0
+let roundCount = 0
+
+const infoText = document.querySelector(".infoText p")
+
 //Randomly choose rps option for the computer
 function getComputerChoice() {
     let computerChoice = Math.random()
@@ -13,10 +19,6 @@ function getComputerChoice() {
     }
 }
 
-
-let playerScore = 0
-let computerScore = 0
-
 //Play round of rps using player and computer choices
 function playRound(playerChoice, computerChoice) {
     if (playerChoice == computerChoice) {
@@ -28,18 +30,25 @@ function playRound(playerChoice, computerChoice) {
         playerChoice === "scissors" && computerChoice === "paper"
     ) {
         playerScore++
-        updatePlayerScore(playerScore)
-        updateInfoText("player")
+        updatePlayerScore(playerScore);
+        updateInfoText("player");
     }
     else {
         computerScore++
         updateComputerScore(computerScore)
         updateInfoText("computer");
     }
+
+    roundCount++;
+    if (roundCount >= 5) {
+        displayWinner(playerScore, computerScore)
+        updatePlayerScore(playerScore = 0);
+        updateComputerScore(computerScore = 0);
+        roundCount = 0;
+    }
 }
 
 function updateInfoText(winner) {
-    const infoText = document.querySelector(".infoText p")
     switch (winner) {
         case "draw":
             infoText.textContent = "Draw!"
@@ -52,6 +61,15 @@ function updateInfoText(winner) {
             break;
         default:
             infoText.textContent = "Choose an option to begin the game";
+    }
+}
+
+function displayWinner(playerScore, computerScore) {
+    if (playerScore > computerScore) {
+        infoText.textContent = "Game over. You win!!!"
+    }
+    else {
+        infoText.textContent = "Game over. Computer wins!!!"
     }
 }
 
