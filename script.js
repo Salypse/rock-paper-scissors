@@ -39,6 +39,8 @@ function playRound(playerChoice, computerChoice) {
         updateInfoText("computer");
     }
 
+    updateChoiceText(playerChoice, computerChoice);
+    
     roundCount++;
     if (roundCount >= 5) {
         displayWinner(playerScore, computerScore)
@@ -81,6 +83,14 @@ function updatePlayerScore(playerScore) {
 function updateComputerScore(computerScore) {
     computerScoreText = document.querySelector(".computerScore");
     computerScoreText.textContent = `Computer Score: ${computerScore}`;
+}
+
+function updateChoiceText(playerChoice, computerChoice) {
+    playerChoiceText = document.querySelector(".playerChoice");4
+    computerChoiceText = document.querySelector(".computerChoice");
+
+    playerChoiceText.textContent = `Your Choice: ${playerChoice}`;
+    computerChoiceText.textContent = `Computer Choice: ${computerChoice}`;
 }
 
 const playerRockButton = document.querySelector("#playerRockButton");
